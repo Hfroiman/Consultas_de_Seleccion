@@ -102,17 +102,36 @@ FROM CLIENTES cl
     from Colaboradores col
     where year (col.FechaNacimiento)>2000
 
+    SELECT * from Colaboradores
+
 -- Todos los datos de los colaboradores que hayan nacido entre los meses de Enero y Julio (inclusive)
-    
+
+    SELECT
+        *
+    from Colaboradores col 
+    where MONTH(col.FechaNacimiento)>=1 and MONTH(col.FechaNacimiento)<=7
+
 -- Todos los datos de los clientes cuyo apellido finalice con vocal
+
+    SELECT * from Clientes cl where cl.Apellidos like '[aeiou]%'
+
 -- Todos los datos de los clientes cuyo nombre comience con 'A' y contenga al menos otra 'A'. Por ejemplo, Ana, Anatasia, Aaron, etc
 -- Todos los colaboradores que tengan más de 10 años de antigüedad
 -- Los códigos de producto, sin repetir, que hayan registrado al menos un pedido
+
+SELECT distinct pe.IDProducto from Pedidos pe
+order by pe.IDProducto asc
+
+
 -- Todos los datos de todos los productos con su precio aumentado en un 20%
+
+
 SELECT
 *,
 precio + (Precio*0.20) as PrecioAumento
 from Productos
+
+
 -- Todos los datos de todos los colaboradores ordenados por apellido ascendentemente en primera instancia y por nombre descendentemente en
 --segunda instancia.
 SELECT
